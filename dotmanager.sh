@@ -181,13 +181,53 @@ apply_stow() {
 }
 
 # ---------------------------------------------------------
+# 📥 LOGIC: EXPORT (System State & Packages)
+# ---------------------------------------------------------
+export_state() {
+    echo "📥 Exporting system state to $DOTFILES_DIR/system-state..."
+    
+    # Create the directory for system backups (this won't be stowed)
+    mkdir -p "$DOTFILES_DIR/system-state"
+
+    # 1. Export Official Arch/CachyOS Packages
+    # -Q (Query) -q (Quiet/no versions) -e (Explicitly installed) -n (Native repos)
+    echo "   -> Exporting native pacman packages..."
+    pacman -Qqen > "$DOTFILES_DIR/system-state/pkglist-repo.txt"
+
+    # 2. Export AUR Packages
+    # -m (Foreign/AUR packages)
+    echo "   -> Exporting AUR packages..."
+    pacman -Qqem > "$DOTFILES_DIR/system-state/pkglist-aur.txt"
+
+    # 3. Export GTK/System Desktop Settings (dconf)
+    # Even on Hyprland, GTK apps rely on these settings for themes/fonts
+    if command -v dconf &> /dev/null; then
+        echo "   -> Exporting dconf (GTK) settings..."
+        dconf dump / > "$DOTFILES_DIR/system-state/dconf-settings.ini"
+    fi
+
+    # 4. Copy crucial /etc/ files (Backup only, DO NOT stow /etc/)
+    echo "   -> Backing up essential /etc files..."
+    mkdir -p "$DOTFILES_DIR/system-state/etc"
+    cp /etc/pacman.conf "$DOTFILES_DIR/system-state/etc/" 2>/dev/null || true
+    cp /etc/makepkg.conf "$DOTFILES_DIR/system-state/etc/" 2>/dev/null || true
+
+    echo ""
+    echo "✅ System state exported successfully!"
+}
+
+# ---------------------------------------------------------
 # 🚦 ROUTER
 # ---------------------------------------------------------
 case "$1" in
     init) init_structure ;;
     apply) apply_stow ;;
+    export) export_state ;;
     *)
-        echo "Usage: $0 {init|apply}"
+        echo "Usage: $0 {init|apply|export}"
+        echo "  init   - Creates the structure and moves existing configs."
+        echo "  apply  - Runs GNU Stow to generate the symlinks."
+        echo "  export - Backups up package lists and system state."
         exit 1
         ;;
 esac
