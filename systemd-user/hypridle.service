@@ -1,0 +1,16 @@
+[Unit]
+Description=Hyprland Idle Management Daemon
+Documentation=https://wiki.hyprland.org/Hypr-Ecosystem/hypridle/
+# Ensure it only starts after the graphical environment is completely loaded
+BindsTo=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hypridle
+# Automatically restart the daemon if it crashes or is killed
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

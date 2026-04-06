@@ -1,0 +1,13 @@
+[Unit]
+Description=Hyprpaper Wallpaper Daemon
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/hyprpaper
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target

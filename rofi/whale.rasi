@@ -1,0 +1,17 @@
+/**
+ * whale.rasi - Color Palette
+ **/
+
+* {
+    /* Your base colors */
+    bg:       #1a1e2a;
+    bg-alt:   #212739;
+    fg:       #6a6f87;
+    fg-alt:   #ffffff;
+
+    /* Mapped to variables used in app.rasi */
+    background:     @bg;
+    background-alt: @bg-alt;
+    foreground:     @fg-alt;
+    selected:       @fg;
+}

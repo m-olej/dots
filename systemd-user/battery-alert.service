@@ -1,0 +1,13 @@
+[Unit]
+Description=Battery Low Power Notification Daemon
+After=graphical-session.target
+BindsTo=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.config/hypr/scripts/low_battery.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=graphical-session.target

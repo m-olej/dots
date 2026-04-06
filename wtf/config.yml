@@ -1,0 +1,76 @@
+wtf:
+  colors:
+    background: "default" 
+    border:
+      focusable: "gray"
+      focused: "cyan"     # Highlight the active pane
+      normal: "darkgray"
+  refreshInterval: 1
+
+  mods:
+    # ---------------------------------------------------------
+    # Main view: CALENDAR, TODO
+    # ---------------------------------------------------------
+    # ---------------------------------------------------------
+    # CALENDAR
+    # ---------------------------------------------------------
+    gcal:
+      title: "🗓️ Calendar"
+      enabled: true
+      email: "olejniczak.michal24@gmail.com" 
+      secretFile: "~/.config/wtf/gcal/client_secret.json"
+      multiCalendar: true
+      eventCount: 10
+      showDeclined: false
+      displayResponseStatus: true
+      conflictIcon: "⚠"
+      currentIcon: "✔"
+      colors:
+        title: "cyan"
+        description: "green"
+        past: "gray"
+        normal: "white"
+      position:
+        top: 0
+        left: 3
+        height: 3
+        width: 3
+
+    # ---------------------------------------------------------
+    # TODO LIST
+    # ---------------------------------------------------------
+    todo:
+      title: "📋 Developer Tasks"
+      enabled: true
+      filename: "todo.md"
+      checkedIcon: "✓"
+      colors:
+        title: "cyan"
+        list: "white"
+        checked: "gray"
+        highlight:
+          fore: "black"
+          back: "green"
+      position:
+        top: 1
+        left: 0
+        height: 2
+        width: 3
+
+    # ---------------------------------------------------------
+    # NERDY SYSTEM STATS
+    # ---------------------------------------------------------
+    cmdrunner:
+      title: "💻 System Information"
+      enabled: true
+      # We use a bash command to pull live system stats directly into the dashboard
+      cmd: "bash"
+      args: 
+        - "-c"
+        - "echo -e 'OS: \t\t\'$(cat /etc/os-release | grep ID | awk -F '=' '{print $NF}' | xargs printf '%s (%s) - %s\n')'\nKernel: \t'$(uname -r)'\nUptime: \t'$(uptime -p | sed 's/up //')'\nPackages:\t'$(pacman -Q | wc -l)'\nLocal IP:\t'$(ip route get 1.1.1.1 | awk '{print $7; exit}')"
+      refreshInterval: 60
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 3

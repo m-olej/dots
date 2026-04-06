@@ -1,0 +1,100 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "margin-top": 8,
+    "margin-left": 14,
+    "margin-right": 14,
+    "margin-bottom": 0,
+    "spacing": 10,
+    
+    "modules-left": ["custom/menu", "hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["custom/spotify"],
+    "modules-right": ["pulseaudio", "network", "bluetooth", "cpu", "memory", "battery", "clock", "custom/power"],
+
+    "custom/menu": {
+        "format": "", 
+        "on-click": "kitty --class float_tui -e wtfutil -c ~/.config/wtf/config.yml",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+	"format": "{name}",
+        "disable-scroll": true,
+        "all-outputs": false,
+        "active-only": false
+    },
+
+    "hyprland/window": {
+        "format": "  {title}",
+        "max-length": 45,
+        "separate-outputs": true
+    },
+
+    "custom/spotify": {
+        "exec": "~/.config/waybar/modules/spotify.sh",
+        "format": "  {}",
+        "return-type": "json",
+        "on-click": "playerctl --player=spotify_player,spotify play-pause",
+        "on-click-right": "kitty --class float_tui -e spotify_player",
+        "on-scroll-up": "playerctl --player=spotify_player,spotify next",
+        "on-scroll-down": "playerctl --player=spotify_player,spotify previous"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "  Muted",
+        "format-icons": ["", "", ""],
+        "on-click": "pavucontrol"
+    },
+
+    "network": {
+        "format-wifi": "   {signalStrength}%",
+        "format-ethernet": "󰈀  LAN",
+        "format-disconnected": "⚠  Offline",
+        "tooltip-format": "{essid}",
+        "on-click": "kitty --class float_tui -e wlctl"
+    },
+
+    "bluetooth": {
+        "format": "",
+        "format-connected": "  {device_alias}",
+        "format-connected-battery": "  {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "on-click": "kitty --class float_tui -e bluetui"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false,
+        "on-click": "kitty --class float_tui -e btop"
+    },
+
+    "memory": {
+        "format": "  {}%",
+        "tooltip": false,
+        "on-click": "kitty --class float_tui -e btop"
+    },
+
+    "battery": {
+	"states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "format": "  {:%H:%M    %b %d}",
+        "tooltip": false
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout --protocol layer-shell",
+        "tooltip": false
+    }
+}

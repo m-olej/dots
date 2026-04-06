@@ -1,0 +1,28 @@
+set previewer ~/.config/lf/previewer.sh
+set cleaner ~/.config/lf/cleaner.sh
+set open ~/.config/lf/opener.sh
+
+# Bind 'Enter' and 'l' (vim right) to execute the open command
+cmd open ${{
+    ~/.config/lf/opener.sh "$f"
+}}
+
+bind <enter> open
+bind l open
+
+# Define the toggle command
+cmd toggle_image %{{
+    state_file="$HOME/.cache/lf_image_toggle"
+    if [ -f "$state_file" ]; then
+        rm "$state_file"
+    else
+        touch "$state_file"
+    fi
+    
+    # Force lf to clear the screen and redraw the preview
+    lf -remote "send $id clear"
+    lf -remote "send $id reload"
+}}
+
+# Map the 'i' key to trigger the toggle
+map i toggle_image

@@ -1,0 +1,128 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "SF Pro Display", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+}
+
+/* Make the main bar background completely transparent */
+window#waybar {
+    background: transparent;
+}
+
+/* The Base "Pill" Styling for all modules */
+#workspaces, #window, #custom-spotify, 
+#pulseaudio, #network, #bluetooth, 
+#cpu, #memory, #battery, #clock {
+    background-color: rgba(10, 14, 20, 0.85); /* Deep Slate */
+    color: #B3B1AD; /* White/Gray Text */
+    border-radius: 12px;
+    padding: 2px 14px;
+    margin: 4px 0px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Specific Module Tweaks --- */
+
+/* Arch/CachyOS Logo Menu */
+#custom-menu {
+    color: #39BAE6; /* Cyan */
+    font-size: 20px;
+    padding-right: 12px;
+    padding-left: 4px;
+    margin-top: 4px;
+}
+
+/* Power Button */
+#custom-power {
+    color: #F07178; /* Soft Red */
+    background-color: rgba(10, 14, 20, 0.85);
+    border-radius: 12px;
+    padding: 2px 14px 2px 16px;
+    margin: 4px 0px;
+    font-size: 16px;
+}
+
+/* Workspaces */
+/* --- Workspaces (The Middle Ground) --- */
+
+/* The container holding the numbers */
+#workspaces {
+    background-color: rgba(10, 14, 20, 0.85); /* Deep Slate */
+    border-radius: 12px;
+    padding: 2px 6px;
+    margin: 4px 0px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* The individual inactive numbers */
+#workspaces button {
+    color: #4A5568; /* Dimmed gray so they don't distract */
+    font-weight: 900;
+    padding: 0px 8px;
+    margin: 2px 2px;
+    border-radius: 8px;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+/* The active number (Solid Cyan Pill) */
+#workspaces button.active {
+    background-color: #39BAE6; /* Bright Cyan */
+    color: #0A0E14; /* Dark Slate text for high contrast */
+    box-shadow: 0px 0px 5px rgba(57, 186, 230, 0.4); /* Slight cyan glow */
+}
+
+/* Hover effect for inactive numbers */
+#workspaces button:hover {
+    background-color: rgba(57, 186, 230, 0.15); /* Faint cyan background */
+    color: #39BAE6;
+    box-shadow: none;
+}
+
+/* Spotify Colors (Requires your spotify.sh script to output classes) */
+#custom-spotify.playing {
+    color: #C2D94C; /* Green */
+    border: 1px solid rgba(194, 217, 76, 0.2);
+}
+
+#custom-spotify.paused {
+    color: #B3B1AD;
+}
+
+/* Default Battery Color (When above 80% or charging) */
+#battery {
+    color: #B3B1AD; 
+}
+
+/* Green when healthy */
+#battery.good {
+    color: #C2D94C;
+}
+
+/* Warning States */
+#battery.warning {
+    color: #FFCB6B; /* Yellow */
+}
+
+#battery.critical {
+    color: #F07178; /* Red */
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging {
+    color: #C2D94C;
+}
+
+/* Simple blinking animation for dying battery */
+@keyframes blink {
+    to {
+        background-color: rgba(240, 113, 120, 0.2);
+        color: #F07178;
+    }
+}

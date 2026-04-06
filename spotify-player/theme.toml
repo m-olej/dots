@@ -1,0 +1,35 @@
+[[themes]]
+name = "Blue whale"
+
+[themes.palette]
+# Deep dark slate background (blends perfectly if Kitty has slight transparency)
+background = "#0A0E14" 
+foreground = "#B3B1AD"
+
+# Standard ANSI colors tuned for a modern Arch/Hyprland aesthetic
+black = "#0A0E14"
+red = "#F07178"
+green = "#C2D94C"      # Vibrant Spotify/CachyOS Green
+yellow = "#FFCB6B"
+blue = "#82AAFF"
+magenta = "#C792EA"
+cyan = "#39BAE6"       # Sharp Teal/Cyan for accents
+white = "#B3B1AD"
+
+# Bright ANSI variants for highlights
+bright_black = "#303640"
+bright_red = "#FF8B92"
+bright_green = "#DDFFA7"
+bright_yellow = "#FFE585"
+bright_blue = "#9CC4FF"
+bright_magenta = "#E1ACFF"
+bright_cyan = "#A3F7FF"
+bright_white = "#FFFFFF"
+
+[themes.component_style]
+# Customizing specific UI elements to look like a modern dashboard
+block_title = { fg = "#39BAE6", modifiers = ["Bold"] }
+playback_track = { fg = "#FFFFFF", modifiers = ["Bold"] }
+playback_artists = { fg = "#39BAE6" }
+playback_progress_bar = { bg = "#303640", fg = "#C2D94C" }
+selection = { bg = "#303640", modifiers = ["Bold"] }

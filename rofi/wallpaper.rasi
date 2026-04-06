@@ -1,0 +1,123 @@
+/**
+ * wallpaper.rasi - Wallpaper Selector Theme
+ **/
+
+/*****----- Global Properties -----*****/
+@import "./whale.rasi"
+
+/***** Config *****/
+configuration {
+    show-icons:          false;
+    drun-display-format: "{name}";
+    font:                "FiraCode Nerd Font 12";
+}
+
+* {
+    border:  0;
+    margin:  0;
+    padding: 0;
+    spacing: 0;
+}
+
+/***** Main Window *****/
+window {
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+    fullscreen:       false;
+    width:            800px;
+    enabled:          true;
+    border:           2px solid;
+    border-radius:    12px;
+    border-color:     @selected;
+    background-color: @background;
+    cursor:           "default";
+}
+
+/***** Main Box *****/
+mainbox {
+    enabled:          true;
+    spacing:          15px;
+    padding:          20px;
+    background-color: transparent;
+    children:         [ "inputbar", "listview" ];
+}
+
+/***** Input Bar *****/
+inputbar {
+    enabled:          true;
+    spacing:          10px;
+    padding:          15px;
+    border-radius:    8px;
+    background-color: @background-alt;
+    text-color:       @foreground;
+    children:         [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:          true;
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+entry {
+    enabled:          true;
+    background-color: inherit;
+    text-color:       inherit;
+    cursor:           text;
+    placeholder:      "Search Wallpapers...";
+    placeholder-color: inherit;
+}
+
+/***** Listview *****/
+listview {
+    enabled:          true;
+    columns:          1;
+    lines:            8;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+    layout:           vertical;
+    reverse:          false;
+    fixed-height:     true;
+    fixed-columns:    true;
+    
+    spacing:          8px;
+    margin:           10px 0px 0px 0px;
+    background-color: transparent;
+    text-color:       @foreground;
+    cursor:           "default";
+}
+
+/***** Elements *****/
+element {
+    enabled:          true;
+    spacing:          10px;
+    padding:          12px 15px;
+    border-radius:    8px;
+    background-color: transparent;
+    text-color:       @foreground;
+    cursor:           pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @foreground;
+}
+
+element selected.normal {
+    background-color: @background-alt;
+    text-color:       @foreground;
+    border:           2px solid;
+    border-color:     @selected;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    highlight:        inherit;
+    cursor:           inherit;
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+}
