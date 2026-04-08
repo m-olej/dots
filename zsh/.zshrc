@@ -34,4 +34,5 @@ fi
 
 unsetopt correct_all
 
-alias ssh='TERM=xterm-256color VISUAL=vi /usr/bin/ssh'
+alias ssh='TERM=xterm-256color EDITOR=vi /usr/bin/ssh'
+alias via='via & disown'

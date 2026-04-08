@@ -1,39 +1,38 @@
 #!/usr/bin/env bash
 
-# Target spotify_player first, fallback to standard spotify
-PLAYER="--player=spotify_player,spotify"
+# Catch termination signals and kill all child processes
+trap 'pkill -P $$' EXIT SIGINT SIGTERM
 
-# Infinite loop ensures the script reconnects if you restart the background daemon
+PLAYER="--player=spotify_player"
+
+# Infinite loop ensures the script reconnects if playerctl dies
 while true; do
-    # Listen to DBus events instead of polling (Saves battery/CPU)
+    # Listen to DBus events instead of polling
     playerctl $PLAYER metadata --format '{{status}}::{{artist}} - {{title}}::{{album}}' --follow 2>/dev/null | while read -r line; do
+        
+        # 1. Split variables using native bash (Zero subprocesses, lightning fast)
+        STATUS="${line%%::*}"
+        REMAINDER="${line#*::}"
+        TEXT="${REMAINDER%%::*}"
+        ALBUM="${REMAINDER#*::}"
 
-        # Split the output into variables
-        STATUS=$(echo "$line" | awk -F'::' '{print $1}')
-        TEXT=$(echo "$line" | awk -F'::' '{print $2}')
-        ALBUM=$(echo "$line" | awk -F'::' '{print $3}')
-
-        # Truncate text if it's too long to prevent Waybar from stretching
+        # 2. Truncate text if it's too long
         if [ ${#TEXT} -gt 45 ]; then
             TEXT="${TEXT:0:42}..."
         fi
 
-        # Escape quotes to prevent invalid JSON
-        TEXT="${TEXT//\"/\\\"}"
-        ALBUM="${ALBUM//\"/\\\"}"
-
-        # Output formatted JSON based on playback state
+        # 3. Use jq to safely construct the JSON and handle newlines correctly.
         if [[ "$STATUS" == "Playing" ]]; then
-            echo "{\"text\": \"$TEXT\", \"class\": \"playing\", \"tooltip\": \"$TEXT\n $ALBUM\"}"
+            jq -c -n --unbuffered --arg text "$TEXT" --arg album "$ALBUM" \
+                '{"text": $text, "class": "playing", "tooltip": ($text + "\n " + $album)}'
         elif [[ "$STATUS" == "Paused" ]]; then
-            echo "{\"text\": \"$TEXT\", \"class\": \"paused\", \"tooltip\": \"Paused\n$TEXT\n $ALBUM\"}"
+            jq -c -n --unbuffered --arg text "$TEXT" --arg album "$ALBUM" \
+                '{"text": $text, "class": "paused", "tooltip": ("Paused\n" + $text + "\n " + $album)}'
         fi
-
-        # Flush output so Waybar updates instantly
-        echo "" > /dev/null
+        
     done
 
-    # If the playerctl process dies (daemon stops), clear the module and wait
+    # If the playerctl process dies, clear the module and wait
     echo '{"text": "", "class": "stopped", "tooltip": "Nothing Playing"}'
-    sleep 2
+    sleep 5 # safety belt to prevent fast spinning
 done

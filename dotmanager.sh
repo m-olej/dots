@@ -10,9 +10,6 @@ CONFIG_DIR="$HOME/.config"
 # 🛠️ HARDCODED TARGETS
 # ---------------------------------------------------------
 
-# 1. Apps that live in ~/.config/
-# Format -> "repo_folder_name:config_subfolder_path"
-# If they are the same, you can just write "hypr"
 CONFIG_APPS=(
     "hypr"
     "waybar"
@@ -33,14 +30,13 @@ CONFIG_ROOT_FILES=(
     "zsh:.zshenv"
 )
 
-# 2. Singular files that live in ~/ (Home directory)
-# Format -> "repo_folder_name:actual_file_name"
-HOME_FILES=(
-)
-
 HOME_APPS=(
     "zsh-d:.zshrc.d"
 )
+
+HOME_FILES=(
+)
+
 
 
 # ---------------------------------------------------------
@@ -217,17 +213,92 @@ export_state() {
 }
 
 # ---------------------------------------------------------
+# 🔄 LOGIC: SYNC (Recursive & Comprehensive)
+# ---------------------------------------------------------
+sync_new_files() {
+    echo "🔄 Deep-syncing all untracked files into $DOTFILES_DIR..."
+
+    # Helper function to process mappings
+    process_sync() {
+        local entry="$1"
+        local base_dir="$2"
+        local is_file_mode="$3"
+
+        if [[ "$entry" == *":"* ]]; then
+            pkg="${entry%%:*}"; target="${entry##*:}"
+        else
+            pkg="$entry"; target="$entry"
+        fi
+
+        src="$base_dir/$target"
+        dest="$DOTFILES_DIR/$pkg"
+
+        if [ -e "$src" ]; then
+            # If it's a single file mapping (like .zshrc)
+            if [ "$is_file_mode" = true ]; then
+                if [ -f "$src" ] && [ ! -L "$src" ]; then
+                    echo "  -> Found untracked root file: $target. Moving to $pkg/"
+                    mkdir -p "$dest"
+                    mv "$src" "$dest/"
+                fi
+            # If it's a directory mapping (like nvim/)
+            elif [ -d "$src" ]; then
+                # Find all REAL files/folders (not symlinks) recursively
+                # We exclude the root src path itself from the results
+		# Avoid system aware state files / dirs
+		find "$src" -not -type l \
+		    -not -path "$src" \
+		    -not -name "*.wants" -not -path "*.wants/*" \
+		    -not -name "*.requires" -not -path "*.requires/*" | while read -r new_item; do
+                    # Calculate relative path to maintain structure
+                    rel_path="${new_item#$src/}"
+                    repo_item="$dest/$rel_path"
+
+                    echo "  -> Syncing new item: $target/$rel_path"
+                    mkdir -p "$(dirname "$repo_item")"
+                    
+                    # Move and overwrite if necessary (careful with mv)
+                    if [ -d "$new_item" ]; then
+                        mkdir -p "$repo_item"
+                    else
+                        mv "$new_item" "$repo_item"
+                    fi
+                done
+            fi
+        fi
+    }
+
+    echo "--- Checking Config Apps ---"
+    for entry in "${CONFIG_APPS[@]}"; do process_sync "$entry" "$CONFIG_DIR" false; done
+
+    echo "--- Checking Home Apps ---"
+    for entry in "${HOME_APPS[@]}"; do process_sync "$entry" "$HOME" false; done
+
+    echo "--- Checking Config Root Files ---"
+    for entry in "${CONFIG_ROOT_FILES[@]}"; do process_sync "$entry" "$CONFIG_DIR" true; done
+
+    echo "--- Checking Home Files ---"
+    for entry in "${HOME_FILES[@]}"; do process_sync "$entry" "$HOME" true; done
+
+    echo ""
+    echo "✅ Deep sync complete! New files are now in the repo."
+    echo "🔗 Run '$0 apply' to turn them into symlinks."
+}
+
+# ---------------------------------------------------------
 # 🚦 ROUTER
 # ---------------------------------------------------------
 case "$1" in
     init) init_structure ;;
     apply) apply_stow ;;
     export) export_state ;;
+    sync) sync_new_files ;;
     *)
         echo "Usage: $0 {init|apply|export}"
         echo "  init   - Creates the structure and moves existing configs."
         echo "  apply  - Runs GNU Stow to generate the symlinks."
         echo "  export - Backups up package lists and system state."
+	echo "  sync   - sync system configurations with dotfiles repo. Doesnt run stow."
         exit 1
         ;;
 esac
