@@ -1,5 +1,3 @@
-rocketchat-client-bin
-teleport-client-bin
 visual-studio-code-bin
 wlctl-bin
 wtfutil

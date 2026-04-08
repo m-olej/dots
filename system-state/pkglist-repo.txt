@@ -94,8 +94,6 @@ hyprland
 hyprlock
 hyprpaper
 inetutils
-intel-media-driver
-intel-ucode
 iptables-nft
 iwd
 jfsutils
@@ -105,7 +103,6 @@ less
 lf
 lib32-mesa
 lib32-opencl-mesa
-lib32-vulkan-intel
 libdvdcss
 libgsf
 libopenraw
@@ -213,7 +210,6 @@ uwsm
 vim
 vlc-plugins-all
 vpl-gpu-rt
-vulkan-intel
 waybar
 wget
 which

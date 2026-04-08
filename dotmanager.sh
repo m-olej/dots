@@ -30,13 +30,10 @@ CONFIG_ROOT_FILES=(
     "zsh:.zshenv"
 )
 
-HOME_APPS=(
-    "zsh-d:.zshrc.d"
-)
-
 HOME_FILES=(
+    "zsh-d:.zshrc.d"
+    "zsh:.zshrc"
 )
-
 
 
 # ---------------------------------------------------------
