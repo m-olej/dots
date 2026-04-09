@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 source /usr/share/cachyos-zsh-config/cachyos-config.zsh
+source /usr/share/nvm/init-nvm.sh
 
 # Define your target config directory
 local conf_dir="${ZDOTDIR:-$HOME}/.zshrc.d"

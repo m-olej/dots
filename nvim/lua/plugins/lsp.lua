@@ -9,13 +9,13 @@ return {
       require("mason").setup()
       require("mason-lspconfig").setup({
         ensure_installed = {
-		"lua_ls",
-		"bash-language-server",
-		"clangd",
-		"rust-analyzer",
-		"docker-langserver",
-		"docker-compose-langserver",
-		"marksman",
+            "bashls",
+            "clangd",
+            "docker_compose_language_service", 
+            "dockerls",
+            "lua_ls",
+            "marksman",
+            "rust_analyzer",
 	},
         handlers = {
           function(server_name)

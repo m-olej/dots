@@ -18,3 +18,13 @@ map("n", "<Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window wid
 -- Keep cursor centered when scrolling half pages
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+
+-- Diagnostic (Error) Keymaps
+map('n', 'gl', vim.diagnostic.open_float, { desc = "Show Full Error Message" })
+map('n', '[d', vim.diagnostic.goto_prev, { desc = "Jump to Previous Error" })
+map('n', ']d', vim.diagnostic.goto_next, { desc = "Jump to Next Error" })
+
+-- Normal mode: Toggle comment on current line
+map("n", "<C-/>", "gcc", { remap = true, desc = "Toggle Comment" })
+-- Visual mode: Toggle comment on highlighted block
+map("v", "<C-/>", "gc", { remap = true, desc = "Toggle Comment" })

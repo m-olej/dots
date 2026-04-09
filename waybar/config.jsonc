@@ -6,7 +6,6 @@
     "margin-left": 14,
     "margin-right": 14,
     "margin-bottom": 0,
-    "spacing": 10,
     
     "modules-left": ["custom/menu", "hyprland/workspaces", "hyprland/window"],
     "modules-center": ["custom/spotify"],
@@ -42,8 +41,8 @@
     },
 
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-muted": "  Muted",
+        "format": "{icon}    {volume}%",
+        "format-muted": "🔇 Muted",
         "format-icons": ["", "", ""],
         "on-click": "pavucontrol"
     },

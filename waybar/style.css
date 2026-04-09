@@ -1,6 +1,6 @@
 * {
     font-family: "JetBrainsMono Nerd Font", "SF Pro Display", sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     border: none;
     border-radius: 0;
@@ -17,10 +17,12 @@ window#waybar {
 #cpu, #memory, #battery, #clock {
     background-color: rgba(10, 14, 20, 0.85); /* Deep Slate */
     color: #B3B1AD; /* White/Gray Text */
-    border-radius: 12px;
-    padding: 2px 14px;
-    margin: 4px 0px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+    /* Dynamic Scaling Geometry */
+    border-radius: 0.85em;      /* Was 12px */
+    padding: 0.15em 1em;        /* Was 2px 14px */
+    margin: 0.3em 0.35em;       /* Replaces the 10px JSON spacing dynamically */
+    
+    box-shadow: 0px 0.15em 0.3em rgba(0, 0, 0, 0.4);
 }
 
 /* --- Specific Module Tweaks --- */
@@ -28,24 +30,45 @@ window#waybar {
 /* Arch/CachyOS Logo Menu */
 #custom-menu {
     color: #39BAE6; /* Cyan */
-    font-size: 20px;
-    padding-right: 12px;
-    padding-left: 4px;
-    margin-top: 4px;
+    font-size: 1.4em;           /* Was 20px */
+    padding-right: 0.85em;      /* Was 12px */
+    padding-left: 0.3em;        /* Was 4px */
+    margin-top: 0.3em;          /* Was 4px */
 }
 
 /* Power Button */
 #custom-power {
     color: #F07178; /* Soft Red */
     background-color: rgba(10, 14, 20, 0.85);
-    border-radius: 12px;
-    padding: 2px 14px 2px 16px;
-    margin: 4px 0px;
-    font-size: 16px;
+    
+    /* Dynamic Scaling */
+    font-size: 1.15em;          /* Was 16px */
+    border-radius: 0.85em;
+    padding: 0.15em 1em 0.15em 1.15em; 
+    margin: 0.3em 0em 0.3em 0.35em; 
 }
 
 /* Workspaces */
 /* --- Workspaces (The Middle Ground) --- */
+
+#workspaces {
+    background-color: rgba(10, 14, 20, 0.85); /* Deep Slate */
+    border-radius: 0.85em;
+    padding: 0.15em 0.4em;
+    margin: 0.3em 0.35em;
+    box-shadow: 0px 0.15em 0.3em rgba(0, 0, 0, 0.4);
+}
+
+/* The individual inactive numbers */
+#workspaces button {
+    color: #4A5568; 
+    font-weight: 900;
+    padding: 0em 0.55em;
+    margin: 0.15em 0.15em;
+    border-radius: 0.55em;
+    background: transparent;
+    transition: all 0.2s ease;
+}
 
 /* The container holding the numbers */
 #workspaces {
@@ -56,22 +79,8 @@ window#waybar {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* The individual inactive numbers */
-#workspaces button {
-    color: #4A5568; /* Dimmed gray so they don't distract */
-    font-weight: 900;
-    padding: 0px 8px;
-    margin: 2px 2px;
-    border-radius: 8px;
-    background: transparent;
-    transition: all 0.2s ease;
-}
-
-/* The active number (Solid Cyan Pill) */
 #workspaces button.active {
-    background-color: #39BAE6; /* Bright Cyan */
-    color: #0A0E14; /* Dark Slate text for high contrast */
-    box-shadow: 0px 0px 5px rgba(57, 186, 230, 0.4); /* Slight cyan glow */
+    color: #2d83a1;
 }
 
 /* Hover effect for inactive numbers */
