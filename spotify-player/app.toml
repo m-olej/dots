@@ -61,3 +61,4 @@ bitrate = 320
 audio_cache = true
 normalization = false
 autoplay = false
+client_port = 8080

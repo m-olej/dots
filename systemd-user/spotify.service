@@ -8,7 +8,9 @@ Wants=network-online.target
 Type=forking
 # Run the heavy engine in the background silently
 ExecStart=/usr/bin/spotify_player --daemon
-Restart=on-failure
+TimeoutStopSec=10
+KillSignal=SIGTERM
+Restart=Always
 RestartSec=5
 
 [Install]
