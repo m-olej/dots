@@ -35,5 +35,9 @@ fi
 
 unsetopt correct_all
 
+bindkey -v
+export KEYTIMEOUT=1
+
 alias ssh='TERM=xterm-256color EDITOR=vi /usr/bin/ssh'
 alias via='via & disown'
+
