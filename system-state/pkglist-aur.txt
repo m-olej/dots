@@ -1,3 +1,0 @@
-visual-studio-code-bin
-wlctl-bin
-wtfutil

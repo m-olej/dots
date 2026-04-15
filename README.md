@@ -13,21 +13,7 @@ git clone https://github.com/m-olej/dots.git ~/dotfiles
 cd ~/dotfiles
 ```
 
-# Install default packages
-
-## 1. Install all official repository packages
-
-```sh
-sudo pacman -S --needed - < system-state/pkglist-repo.txt
-```
-
-## 2. Install all AUR packages (CachyOS uses paru by default)
-
-```sh
-paru -S --needed - < system-state/pkglist-aur.txt
-```
-
-## 3. Load your GNOME/GTK dconf settings
+## Load your GNOME/GTK dconf settings
 
 ```sh
 dconf load / < system-state/dconf-settings.ini
@@ -63,7 +49,6 @@ systemctl --user enable battery-alert.service
 systemctl --user enable cliphist.service
 systemctl --user enable hypridle.service
 systemctl --user enable hyprpaper.service
-systemctl --user enable polkitd.service
 systemctl --user enable spotify.service
 systemctl --user enable ssh-agent.service
 ```
