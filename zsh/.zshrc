@@ -38,6 +38,13 @@ unsetopt correct_all
 bindkey -v
 export KEYTIMEOUT=1
 
+# --- PATH Updates --- #
+
+export PATH="$HOME/.asdf/shims:$PATH"
+
+
+# --- Aliases --- #
+
 alias ssh='TERM=xterm-256color EDITOR=vi /usr/bin/ssh'
 alias via='via & disown'
 

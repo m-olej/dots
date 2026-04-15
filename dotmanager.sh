@@ -30,9 +30,25 @@ CONFIG_ROOT_FILES=(
     "zsh:.zshenv"
 )
 
+HOME_APPS=(
+    "cheatsheets:.cheats"
+)
+
 HOME_FILES=(
     "zsh-d:.zshrc.d"
     "zsh:.zshrc"
+)
+
+SYNC_IGNORE=(
+    "*secret*"
+    "*auth*"
+    "todo.md"
+    ".git"
+    ".github"
+    "node_modules"
+    "__pycache__"
+    "*.log"
+    ".DS_Store"
 )
 
 
@@ -215,6 +231,12 @@ export_state() {
 sync_new_files() {
     echo "🔄 Deep-syncing all untracked files into $DOTFILES_DIR..."
 
+    # Dynamically build ignore arguments for the 'find' command
+    local ignore_args=()
+    for ignore in "${SYNC_IGNORE[@]}"; do
+        ignore_args+=("-not" "-path" "*/$ignore" "-not" "-path" "*/$ignore/*" "-not" "-name" "$ignore")
+    done
+
     # Helper function to process mappings
     process_sync() {
         local entry="$1"
@@ -246,7 +268,8 @@ sync_new_files() {
 		find "$src" -not -type l \
 		    -not -path "$src" \
 		    -not -name "*.wants" -not -path "*.wants/*" \
-		    -not -name "*.requires" -not -path "*.requires/*" | while read -r new_item; do
+		    -not -name "*.requires" -not -path "*.requires/*" \
+            "${ignore_args[@]}" | while read -r new_item; do
                     # Calculate relative path to maintain structure
                     rel_path="${new_item#$src/}"
                     repo_item="$dest/$rel_path"

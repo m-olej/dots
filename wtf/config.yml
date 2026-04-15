@@ -19,6 +19,7 @@ wtf:
       enabled: true
       email: "olejniczak.michal24@gmail.com" 
       secretFile: "~/.config/wtf/gcal/client_secret.json"
+      refreshInterval: 300
       multiCalendar: true
       eventCount: 10
       showDeclined: false
