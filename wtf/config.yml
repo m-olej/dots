@@ -43,7 +43,7 @@ wtf:
     todo:
       title: "📋 Developer Tasks"
       enabled: true
-      filename: "todo.md"
+      filename: "todo.yaml"
       checkedIcon: "✓"
       colors:
         title: "cyan"
@@ -52,6 +52,7 @@ wtf:
         highlight:
           fore: "black"
           back: "green"
+      refreshInterval: 1h
       position:
         top: 1
         left: 0

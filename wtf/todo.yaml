@@ -1,0 +1,110 @@
+items:
+- checked: false
+  date: null
+  tags:
+  - TiwPR
+  - REST
+  text: Implement project
+- checked: false
+  date: null
+  tags:
+  - TiwPR
+  - WebSocket
+  text: Implement project
+- checked: false
+  date: null
+  tags:
+  - TiwPR
+  - WebSocket
+  text: Document idea
+- checked: false
+  date: null
+  tags:
+  - TiwPR
+  - REST
+  text: Document idea
+- checked: false
+  date: null
+  tags:
+  - MBP
+  text: H&M list implementation
+- checked: false
+  date: null
+  tags:
+  - distbot
+  text: create implementation plan
+- checked: true
+  date: null
+  tags:
+  - distbot
+  text: document architectural shift
+- checked: false
+  date: 2026-04-16
+  tags:
+  - Get Your Shit Together
+  text: Take meds
+- checked: false
+  date: null
+  tags:
+  - Polibuda
+  text: Inter-service communication
+- checked: false
+  date: null
+  tags:
+  - Polibuda
+  text: Protocol definitions
+- checked: false
+  date: null
+  tags:
+  - Polibuda
+  text: Backend - Websocket connect...
+- checked: false
+  date: null
+  tags:
+  - Polibuda
+  text: Backend - Rust dsp
+- checked: false
+  date: null
+  tags:
+  - Polibuda
+  text: Frontend - Canvas renderer
+- checked: false
+  date: null
+  tags:
+  - Polibuda
+  text: Frontend - UI
+- checked: false
+  date: null
+  tags:
+  - Polibuda
+  text: Frontend - Audio Worklet
+- checked: false
+  date: null
+  tags:
+  - Polibuda
+  text: Przygotowanie na prezentacje
+- checked: false
+  date: 2026-04-23
+  tags:
+  - Polibuda
+  text: TiwPR - Projekt REST (1)
+- checked: false
+  date: 2026-04-22
+  tags:
+  - Polibuda
+  text: MBP - H&M List
+- checked: false
+  date: 2026-04-30
+  tags:
+  - Polibuda
+  text: TiwPR - Projekt WebSockets
+- checked: false
+  date: 2026-04-18
+  tags:
+  - Modra
+  text: Posprzątać mieszkanie po ...
+- checked: false
+  date: null
+  tags:
+  - Modra
+  text: Mail potem telefon do facho...

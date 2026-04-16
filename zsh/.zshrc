@@ -40,6 +40,7 @@ export KEYTIMEOUT=1
 
 # --- PATH Updates --- #
 
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.asdf/shims:$PATH"
 
 
