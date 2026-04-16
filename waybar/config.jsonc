@@ -45,7 +45,8 @@
         "format": "{icon}    {volume}%",
         "format-muted": "🔇 Muted",
         "format-icons": ["", "", ""],
-        "on-click": "pavucontrol"
+        "on-click-right": "pavucontrol",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
 
     "network": {
