@@ -1,3 +1,5 @@
+vim.opt.clipboard = "unnamedplus"
+
 -- Set leader key to Space BEFORE loading plugins
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

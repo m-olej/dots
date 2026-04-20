@@ -1,0 +1,12 @@
+[Unit]
+Description=Timer to run gtasks integration on boot and every 15 minutes
+
+[Timer]
+# Run 1 minute after the system has booted
+OnBootSec=1min
+
+# Run 15 minutes after the service was last started
+OnUnitActiveSec=15min
+
+[Install]
+WantedBy=timers.target

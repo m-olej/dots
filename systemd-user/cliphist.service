@@ -5,7 +5,7 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/wl-paste --watch /usr/bin/cliphist store
+ExecStart=/usr/bin/wl-paste -p --watch /usr/bin/cliphist store
 Restart=on-failure
 RestartSec=2
 

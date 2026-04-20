@@ -1,5 +1,20 @@
 items:
 - checked: false
+  date: 2026-04-16T00:00:00Z
+  tags:
+  - Get Your Shit Together
+  text: Take meds
+- checked: false
+  date: 2026-04-18T00:00:00Z
+  tags:
+  - Modra
+  text: Posprzątać mieszkanie po ...
+- checked: false
+  date: 2026-04-23T00:00:00Z
+  tags:
+  - Polibuda
+  text: TiwPR - Projekt REST (1)
+- checked: false
   date: null
   tags:
   - TiwPR
@@ -11,12 +26,6 @@ items:
   - TiwPR
   - WebSocket
   text: Implement project
-- checked: false
-  date: null
-  tags:
-  - TiwPR
-  - WebSocket
-  text: Document idea
 - checked: false
   date: null
   tags:
@@ -33,16 +42,6 @@ items:
   tags:
   - distbot
   text: create implementation plan
-- checked: true
-  date: null
-  tags:
-  - distbot
-  text: document architectural shift
-- checked: false
-  date: 2026-04-16
-  tags:
-  - Get Your Shit Together
-  text: Take meds
 - checked: false
   date: null
   tags:
@@ -82,29 +81,41 @@ items:
   date: null
   tags:
   - Polibuda
+  - TiwPR
   text: Przygotowanie na prezentacje
-- checked: false
-  date: 2026-04-23
-  tags:
-  - Polibuda
-  text: TiwPR - Projekt REST (1)
-- checked: false
-  date: 2026-04-22
-  tags:
-  - Polibuda
-  text: MBP - H&M List
-- checked: false
-  date: 2026-04-30
-  tags:
-  - Polibuda
-  text: TiwPR - Projekt WebSockets
-- checked: false
-  date: 2026-04-18
-  tags:
-  - Modra
-  text: Posprzątać mieszkanie po ...
 - checked: false
   date: null
   tags:
   - Modra
   text: Mail potem telefon do facho...
+- checked: false
+  date: 2026-04-30T00:00:00Z
+  tags:
+  - Polibuda
+  text: TiwPR - Projekt WebSockets
+- checked: true
+  date: 2026-04-22T00:00:00Z
+  tags:
+  - Polibuda
+  text: MBP - H&M List
+- checked: true
+  date: null
+  tags:
+  - TiwPR
+  - WebSocket
+  text: Document idea
+- checked: true
+  date: null
+  tags:
+  - distbot
+  text: document architectural shift
+- checked: false
+  date: null
+  tags:
+  - Modra
+  text: #test cos
+- checked: false
+  date: 2026-04-20
+  tags:
+  - Modra
+  text: Wyślij liczniki ENEA

@@ -1,0 +1,10 @@
+[Unit]
+Description=Pull tasks to todo module from gtasks
+
+[Service]
+Type=simple
+Environment="PATH=%h/.local/bin:/usr/bin:/usr/local/bin:/bin"
+ExecStart=/usr/bin/bash %h/.config/wtf/gtasks_todo.sh
+
+[Install]
+WantedBy=default.target
