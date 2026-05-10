@@ -59,7 +59,7 @@ while true; do
                 '{"text": $text, "class": "paused", "tooltip": $tt}'
         fi
         
-    done < <(playerctl $PLAYER metadata --format '{{status}}::{{artist}} - {{title}}::{{album}}' --follow 2>/dev/null)
+    done < <(playerctl $PLAYER metadata --format '{{status}}::{{artist}} - {{title}}::{{album}}' --follow 2>/dev/null )
 
     # If the playerctl process dies, clear the module and wait 5 seconds
     echo '{"text": "", "class": "stopped", "tooltip": "Nothing Playing"}'
