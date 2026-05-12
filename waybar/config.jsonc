@@ -9,7 +9,7 @@
     
     "modules-left": ["custom/menu", "hyprland/workspaces", "hyprland/window"],
     "modules-center": ["custom/spotify"],
-    "modules-right": ["pulseaudio", "network", "bluetooth", "cpu", "memory", "battery", "clock", "custom/power"],
+    "modules-right": ["pulseaudio", "network", "bluetooth", "cpu", "memory", "idle_inhibitor", "battery", "clock", "custom/power"],
 
     "custom/menu": {
         "format": "", 
@@ -86,6 +86,17 @@
         "format": "{icon}  {capacity}%",
         "format-charging": "  {capacity}%",
         "format-icons": ["", "", "", "", ""]
+    },
+
+    "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",   // Open eye icon (Caffeine ON)
+        "deactivated": ""  // Closed eye icon (Caffeine OFF)
+    },
+    "tooltip": true,
+    "tooltip-format-activated": "Caffeine Mode: ON",
+    "tooltip-format-deactivated": "Caffeine Mode: OFF"
     },
 
     "clock": {

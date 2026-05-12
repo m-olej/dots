@@ -128,6 +128,16 @@ window#waybar {
     color: #C2D94C;
 }
 
+#idle_inhibitor {
+    padding: 0 10px;
+    font-size: 16px;
+    color: #b3b1ad; /* Default dim color */
+}
+
+#idle_inhibitor.activated {
+    color: #c2d94c; /* Bright green when keeping system awake */
+}
+
 /* Simple blinking animation for dying battery */
 @keyframes blink {
     to {
