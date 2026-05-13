@@ -1,0 +1,14 @@
+[Unit]
+Description=Rclone Bisync - Profile: %i
+Wants=network-online.target
+After=network-online.target
+# Abort if the machine-specific config doesn't exist
+ConditionPathExists=%h/.config/rclone/profiles/%i.conf
+
+[Service]
+Type=oneshot
+# %i passes the instance string (everything after the '@') to the script
+ExecStart=%h/.config/rclone/sync_profile.sh %i
+
+[Install]
+WantedBy=default.target
