@@ -13,8 +13,9 @@ window#waybar {
 
 /* The Base "Pill" Styling for all modules */
 #workspaces, #window, #custom-spotify, 
-#pulseaudio, #network, #bluetooth, 
-#cpu, #memory, #battery, #clock {
+#pulseaudio, #network, #bluetooth, #custom-phone,
+#cpu, #memory, #battery, #clock,
+#custom-drawer-connectivity, #custom-drawer-resources {
     background-color: rgba(10, 14, 20, 0.85); /* Deep Slate */
     color: #B3B1AD; /* White/Gray Text */
     /* Dynamic Scaling Geometry */
@@ -26,6 +27,25 @@ window#waybar {
 }
 
 /* --- Specific Module Tweaks --- */
+
+/* Make sure the group looks cohesive when expanded */
+#group-connectivity {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    margin: 4px 0;
+}
+
+/* Make sure the group looks cohesive when expanded */
+#group-resources {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    margin: 4px 0;
+}
+
+/* Add padding to the hidden children so they don't squish */
+.drawer-child {
+    padding: 0 8px;
+}
 
 /* Arch/CachyOS Logo Menu */
 #custom-menu {

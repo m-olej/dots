@@ -7,15 +7,72 @@
     "margin-right": 14,
     "margin-bottom": 0,
     
-    "modules-left": ["custom/menu", "hyprland/workspaces", "hyprland/window"],
+    "modules-left": [
+        "custom/menu", 
+        "hyprland/workspaces", 
+        "hyprland/window"
+    ],
     "modules-center": ["custom/spotify"],
-    "modules-right": ["pulseaudio", "network", "bluetooth", "cpu", "memory", "idle_inhibitor", "battery", "clock", "custom/power"],
+    "modules-right": [
+        "group/connectivity",
+        "group/resources",
+        "pulseaudio", 
+        "battery", 
+        "clock", 
+        "custom/power"
+    ],
 
     "custom/menu": {
         "format": "", 
         "on-click": "kitty --class float_tui -e wtfutil -c ~/.config/wtf/config.yml",
         "on-click-right": "kitty --class float_tui -e glow -a ~/.cheats",
         "tooltip": false
+    },
+
+    "group/connectivity": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "drawer-child",
+            "transition-left-to-right": false,
+            "click-to-reveal": true
+        },
+        "modules": [
+            "custom/drawer-connectivity", 
+            "custom/phone",       
+            "network", 
+            "bluetooth"
+        ]
+    },
+
+    "group/resources": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "drawer-child",
+            "transition-left-to-right": false,
+            "click-to-reveal": true
+        },
+        "modules": [
+            "custom/drawer-resources", 
+            "cpu", 
+            "memory",
+            "idle_inhibitor"
+        ]
+    },
+
+    // --- The New Drawer Handles ---
+
+    "custom/drawer-connectivity": {
+        "format": "󰖩", 
+        "tooltip": true,
+        "tooltip-format": "Connectivity Settings"
+    },
+
+    "custom/drawer-resources": {
+        "format": "",
+        "tooltip": true,
+        "tooltip-format": "System Resources"
     },
 
     "hyprland/workspaces": {
@@ -65,6 +122,14 @@
         "on-click": "kitty --class float_tui -e bluetui"
     },
 
+    "custom/phone": {
+        "exec": "~/.config/waybar/modules/phone_status.sh",
+        "interval": 60,
+        "return-type": "json",
+        "format": "{}",
+        "on-click": "kdeconnect-cli -a --id-only | head -n 1 | xargs -I {} kdeconnect-cli -d {} --ping"
+    },
+
     "cpu": {
         "format": "  {usage}%",
         "tooltip": false,
@@ -83,7 +148,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}  {capacity}%",
+        "format": "{icon}\t{capacity}%",
         "format-charging": "  {capacity}%",
         "format-icons": ["", "", "", "", ""]
     },

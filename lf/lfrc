@@ -26,3 +26,9 @@ cmd toggle_image %{{
 
 # Map the 'i' key to trigger the toggle
 map i toggle_image
+
+# --- KDE Connect File Transfer ---
+cmd send-to-phone %kdeconnect-cli -n "Galaxy S25" --share "$fx"
+
+# Bind it to 'S' (Shift + s)
+map S send-to-phone

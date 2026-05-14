@@ -18,6 +18,7 @@ CONFIG_APPS=(
     "wtf"
     "lf"
     "mako"
+    "rclone"
     "rofi"
     "spotify-player"
     "systemd-user:systemd/user"  
@@ -49,6 +50,7 @@ SYNC_IGNORE=(
     "__pycache__"
     "*.log"
     ".DS_Store"
+    "rclone.conf"
 )
 
 

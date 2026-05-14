@@ -48,4 +48,9 @@ export PATH="$HOME/.asdf/shims:$PATH"
 
 alias ssh='TERM=xterm-256color EDITOR=vi /usr/bin/ssh'
 alias via='via & disown'
+alias sync_profile="$HOME/.config/rclone/sync_profile.sh"
 
+
+
+# Added by wash installer
+export PATH="/home/molej/.wash/bin:$PATH"

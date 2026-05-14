@@ -35,3 +35,11 @@ on-button-right=invoke-default-action
 [urgency=high]
 border-color=#ff0000FF
 default-timeout=0
+#
+# --- KDE Connect Pairing Override ---
+[app-name="KDE Connect" summary~=".*[Pp]airing.*"]
+# 0 means it will stay on screen forever until acted upon
+default-timeout=0
+# Optional: Make it a distinct color (e.g., green/blue) so you know it needs attention
+border-color=#4c7899FF
+format=<b>%s</b>\n%b\n\n<span size="smaller" color="#aaaaaa"><i>(Right-click: Accept | Left-click: Ignore)</i></span>
