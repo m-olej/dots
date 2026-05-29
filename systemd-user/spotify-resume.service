@@ -1,0 +1,11 @@
+[Unit]
+Description=Restart Spotify Player Daemon on Machine Resume (librespot hotfix)
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=-/usr/bin/pkill -f "playerctl --player=spotify_player,spotify metadata --format"
+ExecStart=/usr/bin/systemctl --user restart spotify.service
+
+[Install]
+WantedBy=suspend.target

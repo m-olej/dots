@@ -7,7 +7,7 @@ Wants=network-online.target
 [Service]
 Type=forking
 # Run the heavy engine in the background silently
-ExecStart=/usr/bin/spotify_player --daemon
+ExecStart=/usr/bin/spotify_player --daemon --config-folder %h/.config/spotify-player/daemon
 TimeoutStopSec=10
 KillSignal=SIGTERM
 Restart=Always

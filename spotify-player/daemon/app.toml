@@ -1,0 +1,25 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# DAEMON AUDIO & SYSTEM INTEGRATION
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+client_id = "d420a117a32841c2b3474932e49fb54b"
+client_port = 8989 # Non-default to avoid conflicts
+
+# Streaming & Headless Architecture
+enable_streaming = "Always"
+enable_media_control = true # MPRIS integration
+enable_notify = true # Mako integration
+notify_timeout_in_secs = 0 # Rely on Mako's daemon rules
+
+# Notification Payload Formatting
+[notify_format]
+summary = "{track} • {artists}"
+body = "{album}"
+
+# Audio Output Pipeline
+[device]
+name = "molej-spotify"
+device_type = "speaker"
+volume = 100
+bitrate = 320 # High quality, PipeWire handles downsampling if needed
+audio_cache = true
+normalization = false # Let the raw audio pass through

@@ -1,0 +1,29 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# KEYMAPS & ACTIONS
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Quick queue manipulation
+[[keymaps]]
+command = "NextTrack"
+key_sequence = "J" # Shift+J for next
+[[keymaps]]
+command = "PreviousTrack"
+key_sequence = "K" # Shift+K for prev
+
+# Volume Contro 
+[[keymaps]]
+command = { VolumeChange = { offset = 5 } }
+key_sequence = "+"
+[[keymaps]]
+command = { VolumeChange = { offset = -5 } }
+key_sequence = "-"
+
+# Rapid Actions (Operate on the currently playing track without navigating)
+[[actions]]
+action = "GoToArtist"
+key_sequence = "g A"
+target = "PlayingTrack"
+[[actions]]
+action = "GoToAlbum"
+key_sequence = "g B"
+target = "PlayingTrack"

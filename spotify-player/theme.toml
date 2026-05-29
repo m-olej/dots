@@ -27,9 +27,30 @@ bright_cyan = "#A3F7FF"
 bright_white = "#FFFFFF"
 
 [themes.component_style]
-# Customizing specific UI elements to look like a modern dashboard
+# Titles and Borders
 block_title = { fg = "#39BAE6", modifiers = ["Bold"] }
+table_header = { fg = "#39BAE6", modifiers = ["Bold", "Underlined"] }
+
+# Playback Window Elements
+playback_status = { fg = "#C2D94C", modifiers = ["Bold"] }
 playback_track = { fg = "#FFFFFF", modifiers = ["Bold"] }
 playback_artists = { fg = "#39BAE6" }
-playback_progress_bar = { bg = "#303640", fg = "#C2D94C" }
-selection = { bg = "#303640", modifiers = ["Bold"] }
+playback_album = { fg = "#C792EA", modifiers = ["Italic"] }
+playback_genres = { fg = "#303640", modifiers = ["Dim"] }
+playback_metadata = { fg = "#303640" }
+
+# Progress Bar
+playback_progress_bar = { bg = "#0A0E14", fg = "#C2D94C" }
+playback_progress_bar_unfilled = { bg = "#0A0E14", fg = "#303640" }
+
+# Library and Navigation Lists
+current_playing = { fg = "#DDFFA7", modifiers = ["Bold"] }
+selection = { bg = "#303640", fg = "#FFFFFF", modifiers = ["Bold"] }
+secondary_row = { fg = "#B3B1AD", modifiers = ["Dim"] }
+page_desc = { fg = "#82AAFF", modifiers = ["Bold"] }
+playlist_desc = { fg = "#303640", modifiers = ["Italic"] }
+
+# Contextual Popups
+like = { fg = "#F07178", modifiers = ["Bold"] }
+lyrics_playing = { fg = "#A3F7FF", modifiers = ["Bold"] }
+lyrics_played = { fg = "#303640", modifiers = ["Dim"] }

@@ -1,64 +1,52 @@
-theme = "Blue whale"
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# TUI VISUAL CLIENT
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 client_id = "d420a117a32841c2b3474932e49fb54b"
-client_port = 8080
-login_redirect_uri = "http://127.0.0.1:8989/login"
-playback_format = """
-{status} {track} • {artists} {liked}
-{album} • {genres}
-{metadata}"""
-playback_metadata_fields = [
-    "repeat",
-    "shuffle",
-    "volume",
-    "device",
-]
-notify_timeout_in_secs = 0
-notify_transient = false
-tracks_playback_limit = 50
-app_refresh_duration_in_ms = 32
-playback_refresh_duration_in_ms = 0
-page_size_in_rows = 20
-play_icon = "▶"
-pause_icon = "▌▌"
-liked_icon = "♥"
-explicit_icon = "(E)"
-border_type = "Plain"
-progress_bar_type = "Rectangle"
-progress_bar_position = "Bottom"
-genre_num = 2
-cover_img_length = 9
-cover_img_width = 5
-cover_img_scale = 1.0
-enable_media_control = true
+client_port = 8989 # Must match the daemon
+theme = "Blue whale"
+
+# Disable Backend Overlaps
 enable_streaming = "DaemonOnly"
-enable_audio_visualization = false
-enable_notify = true
+enable_media_control = false 
+enable_notify = false
+
+# Minimalist Aesthetics
+border_type = "Rounded"
+progress_bar_type = "Line" 
+progress_bar_position = "Right"
+play_icon = "⏵" # Modern unicode
+pause_icon = "⏸"
+liked_icon = "" # FontAwesome heart (assuming a Nerd Font)
+explicit_icon = "🅴"
+
+playback_format = """
+{status} {track} {liked}
+
+
+
+{artists}
+
+
+
+{album} (Track {track_number})
+
+
+
+{genres}
+
+
+
+{metadata}"""
+
+# The Showcase Image (Kitty Graphics Protocol)
+# 36 columns x 18 rows = perfect 2:1 aspect ratio square for terminal cells
+cover_img_length = 36
+cover_img_width = 18
+cover_img_scale = 1.0
 enable_cover_image_cache = true
-default_device = "spotify-player"
-notify_streaming_only = false
-seek_duration_secs = 5
-sort_artist_albums_by_type = false
-volume_scroll_step = 5
-enable_mouse_scroll_volume = true
 
-[notify_format]
-summary = "{track} • {artists}"
-body = "{album}"
-
+# Layout Tuning
 [layout]
-playback_window_position = "Top"
-playback_window_height = 6
-
-[layout.library]
-playlist_percent = 40
-album_percent = 40
-
-[device]
-name = "molej-spotify"
-device_type = "speaker"
-volume = 100
-bitrate = 320
-audio_cache = true
-normalization = false
-autoplay = false
-client_port = 8080
+playback_window_position = "Top" 
+playback_window_height = 20 # 18 rows for image + 2 rows for padding
