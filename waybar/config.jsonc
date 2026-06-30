@@ -69,6 +69,7 @@
         "tooltip-format": "Connectivity Settings"
     },
 
+
     "custom/drawer-resources": {
         "format": "",
         "tooltip": true,
@@ -89,11 +90,14 @@
     },
 
     "custom/spotify": {
-        "exec": "~/.config/waybar/modules/spotify.sh",
+        "exec": "$HOME/.config/waybar/modules/spotify.sh",
         "format": "  {}",
         "return-type": "json",
+        "escape": true,
+        "restart-interval": 2,
         "on-click": "playerctl --player=spotify_player,spotify play-pause",
         "on-click-right": "kitty --class float_tui -e spotify_player",
+        "on-click-middle": "systemctl --user start spotify-resume",
         "on-scroll-up": "playerctl --player=spotify_player,spotify next",
         "on-scroll-down": "playerctl --player=spotify_player,spotify previous"
     },
@@ -148,7 +152,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}\t{capacity}%",
+        "format": "{icon}  {capacity}%",
         "format-charging": "  {capacity}%",
         "format-icons": ["", "", "", "", ""]
     },

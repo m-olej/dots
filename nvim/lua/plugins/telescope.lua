@@ -4,7 +4,6 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons", -- Adds gorgeous file icons
     {
-      -- The magical C-based FZF sorter (makes searching instant and accurate)
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
     },
@@ -22,8 +21,13 @@ return {
 
     telescope.setup({
       defaults = {
-        -- Make the paths easier to read by truncating the beginning, not the end
-        path_display = { "truncate" },
+        -- 1. The visual flip: Filename first, directory path ghosted
+        path_display = { "filename_first" },
+        
+        -- 2. Clean up the UI prompt and selection markers
+        prompt_prefix = "   ",
+        selection_caret = " ",
+        multi_icon = "  ",
         
         -- Filter out garbage files from your search results
         file_ignore_patterns = {
@@ -45,11 +49,20 @@ return {
       },
       pickers = {
         find_files = {
-          -- Tell find_files to show hidden files (like .config, .bashrc)
+          -- 3. Apply the dropdown theme exclusively to file finding
+          theme = "dropdown",
           hidden = true,
+          -- Dropdowns look best without previews, but if you want the previewer back, 
+          -- change this to true or simply delete the next line:
+          previewer = false, 
+        },
+        buffers = {
+          -- Apply dropdown to buffers as well
+          theme = "dropdown",
+          previewer = true,
         },
         live_grep = {
-          -- Tell live_grep to also search inside hidden files
+          -- Keep the standard wide layout for live_grep so you can read the code previews!
           additional_args = function()
             return { "--hidden" }
           end,

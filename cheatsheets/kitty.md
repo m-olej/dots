@@ -11,7 +11,7 @@
 
 ## Windows (Splits):
 
-* __Ctrl + Shift + E__nter -> new window
+* __Ctrl + Shift + Enter__ -> new window
 
 * __Ctrl + Shift + w__ -> close window
 
@@ -23,9 +23,9 @@
 
 ## Scrolling & Clipboard:
 
-* __Ctrl + Shift + Up / D__own -> scroll line up/down
+* __Ctrl + Shift + Up / Down__ -> scroll line up/down
 
-* __Ctrl + Shift + PageUp / P__ageDown -> scroll page up/down
+* __Ctrl + Shift + PageUp / PageDown__ -> scroll page up/down
 
 * __Ctrl + Shift + h__ -> browse scrollback buffer in pager
 

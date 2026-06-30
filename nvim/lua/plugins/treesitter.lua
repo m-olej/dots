@@ -59,6 +59,7 @@ return {
 	      'query',
 	      'regex',
 	      'rust',
+          'ada',
 	      'toml',
 	      'vim',
 	      'vimdoc',

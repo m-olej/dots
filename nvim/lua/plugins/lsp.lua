@@ -7,26 +7,31 @@ return {
     },
     config = function()
       require("mason").setup()
+
+      -- In Neovim 0.11+, this automatically enables everything listed here!
       require("mason-lspconfig").setup({
         ensure_installed = {
             "bashls",
             "clangd",
-            "docker_compose_language_service", 
+            "docker_compose_language_service",
             "dockerls",
             "lua_ls",
             "marksman",
             "rust_analyzer",
-	},
-        handlers = {
-          function(server_name)
-            require("lspconfig")[server_name].setup({})
-          end,
+        },
+      })
+
+      vim.lsp.config("ada_ls", {
+        root_markers = { "*.gpr", "alire.toml", ".git" },
+        settings = {
+          ada = {
+            projectFile = "" 
+          }
         }
       })
-      -- Quick LSP keymaps
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to Definition" })
-      vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, { desc = "Hover Documentation" })
-      vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = "Code Rename" })
+      
+      -- Tell Neovim core to actively listen for Ada files and turn the server on
+      vim.lsp.enable("ada_ls")
     end,
   }
 }
