@@ -17,7 +17,6 @@ return {
             "dockerls",
             "lua_ls",
             "marksman",
-            "rust_analyzer",
         },
       })
 

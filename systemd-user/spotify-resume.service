@@ -1,5 +1,5 @@
 [Unit]
-Description=Restart Spotify Player Daemon on Machine Resume (librespot hotfix)
+Description=Restart Spotify Player Daemon on Resume (librespot hotfix)
 After=suspend.target
 
 [Service]

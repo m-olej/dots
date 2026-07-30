@@ -10,7 +10,7 @@ Type=forking
 ExecStart=/usr/bin/spotify_player --daemon --config-folder %h/.config/spotify-player/daemon
 TimeoutStopSec=10
 KillSignal=SIGTERM
-Restart=Always
+Restart=always
 RestartSec=5
 
 [Install]
