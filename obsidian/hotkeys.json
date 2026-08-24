@@ -1,0 +1,124 @@
+{
+  "highlightr-plugin:highlighter-plugin-menu": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "'"
+    }
+  ],
+  "notebook-navigator:select-next-file": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "J"
+    }
+  ],
+  "notebook-navigator:select-previous-file": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "K"
+    }
+  ],
+  "editor:insert-link": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "L"
+    }
+  ],
+  "editor:toggle-checklist-status": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "X"
+    }
+  ],
+  "app:switch-vault": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "Escape"
+    }
+  ],
+  "markdown:toggle-preview": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "R"
+    }
+  ],
+  "ink:create-drawing-section": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "D"
+    }
+  ],
+  "ink:create-handwritten-section": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "S"
+    }
+  ],
+  "editor:insert-codeblock": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "C"
+    }
+  ],
+  "editor:insert-footnote": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "F"
+    }
+  ],
+  "editor:open-search": [],
+  "notebook-navigator:toggle-left-sidebar": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "E"
+    }
+  ],
+  "editor:open-search-replace": [],
+  "workspace:close": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "W"
+    }
+  ],
+  "workspace:close-window": [],
+  "app:toggle-ribbon": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "E"
+    }
+  ]
+}
