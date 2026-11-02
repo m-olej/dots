@@ -32,11 +32,11 @@ CONFIG_ROOT_FILES=(
 )
 
 HOME_APPS=(
-    "cheatsheets:.cheats"
+    "cheatsheets:.cheats",
+    ".zshrc.d:.zshrc.d"
 )
 
 HOME_FILES=(
-    "zsh-d:.zshrc.d"
     "zsh:.zshrc"
 )
 

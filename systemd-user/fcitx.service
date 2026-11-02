@@ -1,0 +1,13 @@
+[Unit]
+Description=fcixt input method framework daemon service
+After=graphical-session.target
+
+[Service]
+Type=simple
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+ExecStart=/usr/bin/fcitx5
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

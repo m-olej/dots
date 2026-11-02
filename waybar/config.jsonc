@@ -77,10 +77,13 @@
     },
 
     "hyprland/workspaces": {
-	"format": "{name}",
+        "format": "{name}",
         "disable-scroll": true,
         "all-outputs": false,
-        "active-only": false
+        "active-only": false,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"+1\" })'"
     },
 
     "hyprland/window": {

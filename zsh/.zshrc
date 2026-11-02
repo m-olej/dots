@@ -8,27 +8,20 @@ fi
 source /usr/share/cachyos-zsh-config/cachyos-config.zsh
 eval "$(fnm env --use-on-cd --shell zsh)"
 
-# Define your target config directory
-local conf_dir="${ZDOTDIR:-$HOME}/.zshrc.d"
-
-# Only proceed if the directory exists
-if [[ -d "$conf_dir" ]]; then
-  
-  # Loop through all .sh and .zsh files.
-  # (N)  = Null glob (don't error if empty)
-  # (n)  = Numeric sort (ensures 2-file.zsh loads before 10-file.zsh)
+() {
+  local conf_dir="${ZDOTDIR:-$HOME}/.zshrc.d"
   local conf_file
-  for conf_file in "$conf_dir"/*.{sh,zsh}(Nn); do
-    
-    # Ignore hidden files (starts with .) and editor backups (ends with ~)
-    if [[ "${conf_file:t}" != .* && "${conf_file:t}" != *~ ]]; then
-      source "$conf_file"
-    fi
-    
-  done
-else
-  echo >&2 "zshrc.d: Configuration directory not found at '$conf_dir'."
-fi
+
+  if [[ -d "$conf_dir" ]]; then
+    for conf_file in "$conf_dir"/*.{sh,zsh}(Nn); do
+      if [[ "${conf_file:t}" != .* && "${conf_file:t}" != *~ ]]; then
+        source "$conf_file"
+      fi
+    done
+  else
+    echo >&2 "zshrc.d: Configuration directory not found at '$conf_dir'."
+  fi
+}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -55,3 +48,7 @@ alias sync_profile="$HOME/.config/rclone/sync_profile.sh"
 
 # Added by wash installer
 export PATH="/home/molej/.wash/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/molej/.local/bin:$PATH"
